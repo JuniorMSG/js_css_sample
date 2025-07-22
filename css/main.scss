@@ -1,0 +1,77 @@
+@use "sub";
+@use "sub2";
+@use "/node_modules/bootstrap/scss/bootstrap";
+$color: royalblue;
+
+.container {
+  h1 {
+    color: red;
+    display: flex;
+    // background-color: $color;
+    /* font-size: 30px; */
+  }
+  h2 {
+    color: $color;
+  }
+
+  ul {
+    li {
+      font-size: 40px;
+
+      &.name {  // & 기호를 사용하여 현재 요소(li)에 직접 클래스 적용
+        color: royalblue;
+        background-color: royalblue;
+      }
+
+      &.age {   // & 기호를 사용하여 현재 요소(li)에 직접 클래스 적용
+        color: orange;
+      }
+    }
+  }
+  .fs {
+    &-small { font-size: 12px; }
+    &-medium { font-size: 14px; }
+    &-large { font-size: 16px; }
+  }
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container2 {
+  @include center;
+  width: 500px;
+  height: 500px;
+  background-color: orange;
+
+  .item {
+    @include center;
+    background-color: aliceblue;
+    width: 50%;
+    height: 50%;
+
+  }
+}
+
+@mixin box($size: 100px, $color: thistle) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+.box {
+  @include box;
+}
+
+.box2 {
+  @include box(200px, red);
+}
+
+.box3 {
+  //@include box(200px, mix(red, blue));
+  // @include box(200px, invert(red));
+}
+
+
